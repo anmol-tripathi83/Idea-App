@@ -1,0 +1,11 @@
+
+const idea_controllers = require("../controllers/idea.controllers");
+
+/**
+ * Route for 
+ * GET 127.0.0.1:8000/ideaApp/api/v1/ideas
+ */
+
+module.exports = (app) =>{   // connect app to the routes
+    app.get("/ideaApp/api/v1/ideas",idea_controllers.getAllIdeas);   // when this URI called in get call then hand it over to controllers
+}
