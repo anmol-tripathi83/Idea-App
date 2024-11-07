@@ -75,5 +75,26 @@ exports.updateIdea = (req,res) =>{
             message: "Idea id you want to update doesn't exist!"
         });
     }
+}
 
+
+
+/**
+ * controller for deleting an existing idea
+ */
+exports.deleteIdea = (req,res) =>{
+    // Read the idea id from path param
+    idea_id = req.params.id;
+
+    // check if that idea is present for that id if yes then delete it
+    if(ideas[idea_id]){
+        delete ideas[idea_id];         // no need to update each idea id because in databases primary id is newly generated not updated and not deleted i.e primary key ki value humesa increment hi hoti h decrement kabhi nhi hoti
+        res.status(200).send({
+            message: "Yay, Your idea have successfully deleted"
+        });
+    } else{
+        return res.status(404).send({
+            message: "Idea Id you want to delete is already not exist"
+        });
+    }
 }
